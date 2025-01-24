@@ -6,11 +6,22 @@ load_dotenv()
 from autogen import ConversableAgent
 
 llm_config = {
-    "config_list" : [{
-        "model" : "gpt-4o-mini",
-        "api_key" : os.environ.get("OPEN_AI_API_KEY")
-    }]
+    "config_list": [
+        {
+            "model": "lmstudio-community/Qwen2.5-7B-Instruct-GGUF/Qwen2.5-7B-Instruct-Q4_K_M.gguf",
+            "base_url": "http://localhost:1234/v1",
+            "api_key": "lm-studio",
+        },
+    ],
+    "cache_seed": None,  # Disable caching.
 }
+
+# llm_config = {
+#     "config_list" : [{
+#         "model" : "gpt-4o-mini",
+#         "api_key" : os.environ.get("OPEN_AI_API_KEY")
+#     }]
+# }
 
 generated_number_in_mind = random.randint(1, 100)
 
