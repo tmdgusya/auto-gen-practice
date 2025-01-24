@@ -5,7 +5,7 @@ import re
 
 llm_config = {"config_list": [
         {
-            "model": "lmstudio-community/DeepSeek-R1-Distill-Qwen-7B-GGUF/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf",
+            "model": "deepseek-r1-distill-qwen-7b",
             "base_url": "http://localhost:1234/v1",
             "api_key": "lm-studio",
         },
@@ -68,7 +68,7 @@ class CustomGroupChat(GroupChat):
 group_chat = CustomGroupChat(
     agents=[professor, assistant1, assistant2, assistant3],
     messages=[],
-    max_round=15,  # 필요에 따라 max_round를 조정할 수 있습니다.
+    max_round=3,  # 필요에 따라 max_round를 조정할 수 있습니다.
 )
 
 group_chat_manager = GroupChatManager(
