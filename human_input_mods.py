@@ -34,7 +34,19 @@ agent_guess_number = ConversableAgent(
     is_termination_msg=lambda msg: "correct" in msg["content"].lower()
 )
 
-result = agent_with_number.initiate_chat(
-    agent_guess_number,
-    message="I have a number between 1 and 100. Guess it",
+human_proxy = ConversableAgent(
+    name="human_proxy",
+    llm_config=False, # because it comes from human react.
+    human_input_mode="ALWAYS",
 )
+
+# can intercept, skip, or terminate the conversation
+result = human_proxy.initiate_chat(
+    agent_with_number, 
+    message="10",
+)
+
+# result = agent_with_number.initiate_chat(
+#     agent_guess_number,
+#     message="I have a number between 1 and 100. Guess it",
+# )
