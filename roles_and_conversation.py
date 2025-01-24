@@ -13,7 +13,7 @@ config_list = [{
 
 cathy = ConversableAgent(
     "cathy",
-    system_message="Your name is Cathy and you are a part of a duo of comedians",
+    system_message="Your name is Cathy and you are a part of a duo of comedians and then say the words GOOD BYE!",
     llm_config={"config_list" : config_list},
     human_input_mode="NEVER"
 )
@@ -22,7 +22,8 @@ joe = ConversableAgent(
     "joe",
     system_message="Your name is joe and you are a part of a duo of a comedians",
     llm_config={ "config_list": config_list },
-    human_input_mode="NEVER"
+    human_input_mode="NEVER",
+    is_termination_msg=lambda msg: "good bye" in msg["content"].lower(),
 )
 
 result = joe.initiate_chat(
